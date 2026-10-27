@@ -1,0 +1,370 @@
+/* --- RESETEO Y CONFIGURACIÓN GENERAL --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #080710;
+    color: #ffffff;
+}
+
+/* --- PANTALLA DE INICIO (BIENVENIDA) --- */
+.pantalla-inicio {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #1e1b4b 0%, #090514 70%, #020005 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: opacity 0.8s ease, visibility 0.8s;
+}
+
+.pantalla-inicio.oculto {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.contenedor-bienvenida {
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 11;
+}
+
+.contenedor-bienvenida h1 {
+    font-size: 2.2rem;
+    color: #f472b6;
+    text-shadow: 0 0 20px rgba(244, 114, 182, 0.4);
+    margin-bottom: 15px;
+    animation: flotarTexto 4s ease-in-out infinite alternate;
+}
+
+.zona-botones {
+    margin-top: 40px;
+    position: relative;
+    width: 360px;
+    height: 100px;
+}
+
+.btn {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    position: absolute;
+    top: 25px;
+    transition: transform 0.1s ease, box-shadow 0.3s ease;
+}
+
+.btn-entrar {
+    left: 190px;
+    background: linear-gradient(45deg, #ec4899, #8b5cf6);
+    color: white;
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+    z-index: 2;
+}
+
+.btn-entrar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(236, 72, 153, 0.6);
+}
+
+.btn-salir {
+    left: 40px;
+    background-color: #374151;
+    color: #d1d5db;
+    z-index: 1;
+}
+
+/* --- EFECTO HUELLAS DE PERRITO --- */
+.contenedor-huellas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.huellita {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    pointer-events: none;
+    animation: aparecerHuella 3s ease-in-out forwards;
+}
+
+/* --- PANTALLA PRINCIPAL: INTERIOR --- */
+.pantalla-jardin {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.tarjeta-cumple {
+    position: relative;
+    z-index: 5;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 35px;
+    border-radius: 24px;
+    text-align: center;
+    max-width: 480px;
+    width: 90%;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 1.2s ease-out;
+}
+
+.tarjeta-cumple.mostrar {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.tarjeta-cumple.ocultar-completo {
+    opacity: 0 !important;
+    transform: scale(0.8) !important;
+    pointer-events: none;
+}
+
+.tarjeta-cumple h2 {
+    font-size: 2.6rem;
+    background: linear-gradient(45deg, #f472b6, #c084fc, #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+}
+
+.tarjeta-cumple p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #e5e7eb;
+    margin-bottom: 25px;
+}
+
+.btn-explorar {
+    padding: 10px 25px;
+    background: transparent;
+    border: 2px solid #38bdf8;
+    color: #38bdf8;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-explorar:hover {
+    background: #38bdf8;
+    color: #080710;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+}
+
+/* --- ESTRELLAS INTERACTIVAS (MENSAJES) --- */
+.contenedor-estrellas-mensajes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    pointer-events: none; 
+}
+
+.estrella-clic {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: #ffffff;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    cursor: pointer;
+    pointer-events: auto;
+    box-shadow: 0 0 20px #ffffff;
+    animation: brillarEstrella 2s ease-in-out infinite alternate;
+    transition: transform 0.3s ease;
+}
+
+.estrella-clic:hover {
+    transform: scale(1.5);
+    background: #f472b6;
+    box-shadow: 0 0 25px #f472b6;
+}
+
+/* --- VENTANA MODAL EMERGENTE --- */
+.modal-mensaje {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 4, 10, 0.7);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease;
+}
+
+.modal-mensaje.activo {
+    opacity: 1;
+    visibility: visible;
+}
+
+.contenido-modal {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 450px;
+    width: 85%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    transform: translateY(-30px);
+    transition: transform 0.5s ease;
+}
+
+.modal-mensaje.activo .contenido-modal {
+    transform: translateY(0);
+}
+
+.contenido-modal p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #f3f4f6;
+    font-style: italic;
+}
+
+#imagenModal {
+    display: none;
+    max-width: 100%;
+    max-height: 60vh;
+    border-radius: 12px;
+    margin-top: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    object-fit: contain;
+}
+
+.cerrar-modal {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 2rem;
+    color: #9ca3af;
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 10;
+}
+
+.cerrar-modal:hover {
+    color: #f472b6;
+}
+
+/* --- EL JARDÍN DE FLORES INTERACTIVO --- */
+.apartado-jardin {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 140px;
+    z-index: 4;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding: 0 10%;
+}
+
+.flor {
+    width: 4px;
+    height: 90px;
+    background: #065f46;
+    position: relative;
+    transform-origin: bottom center;
+    animation: viento 4s ease-in-out infinite alternate;
+    cursor: pointer;
+}
+
+.petalos {
+    position: absolute;
+    top: -20px;
+    left: -18px;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, #f472b6 35%, #db2777 80%);
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    box-shadow: 0 0 15px rgba(244, 114, 182, 0.5);
+    transition: all 0.3s ease;
+}
+
+.tallo-1 { height: 100px; animation-delay: 0.1s; }
+.tallo-2 { height: 80px; animation-delay: 0.5s; }
+.tallo-2 .petalos { background: radial-gradient(circle, #c084fc 35%, #7c3aed 80%); box-shadow: 0 0 15px rgba(192, 132, 252, 0.5); }
+.tallo-3 { height: 120px; animation-delay: 0.3s; }
+.tallo-4 { height: 75px; animation-delay: 0.8s; }
+.tallo-4 .petalos { background: radial-gradient(circle, #38bdf8 35%, #2563eb 80%); box-shadow: 0 0 15px rgba(56, 189, 248, 0.5); }
+.tallo-5 { height: 95px; animation-delay: 0.2s; }
+
+.flor:hover .petalos {
+    transform: scale(1.25);
+    box-shadow: 0 0 25px #ffffff;
+}
+
+/* --- ANIMACIONES KEYFRAMES --- */
+@keyframes flotarTexto {
+    0% { transform: translateY(0); text-shadow: 0 0 20px rgba(244, 114, 182, 0.4); }
+    100% { transform: translateY(-12px); text-shadow: 0 0 35px rgba(244, 114, 182, 0.7); }
+}
+
+@keyframes aparecerHuella {
+    0% { opacity: 0; transform: scale(0.5); }
+    20% { opacity: 0.6; transform: scale(1); }
+    80% { opacity: 0.6; }
+    100% { opacity: 0; transform: scale(0.8); }
+}
+
+@keyframes brillarEstrella {
+    0% { opacity: 0.3; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.1); box-shadow: 0 0 15px rgba(255,255,255,0.8); }
+}
+
+@keyframes viento {
+    0% { transform: rotate(-4deg); }
+    100% { transform: rotate(4deg); }
+}

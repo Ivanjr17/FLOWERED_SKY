@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños Cute Kathie!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- REPRODUCTOR DE AUDIO OCULTO -->
+    <audio id="musicaFondo" loop>
+        <source src="https://soundhelix.com" type="audio/mp3">
+    </audio>
+
+    <!-- PANTALLA 1: INICIO -->
+    <div class="pantalla-inicio" id="pantallaInicio">
+        <div class="contenedor-huellas" id="contenedorHuellas"></div>
+
+        <div class="contenedor-bienvenida">
+            <h1>"Eres un fragmento de luz hecho poesía❣️..."</h1>
+            <p>El universo guarda un secreto sobre tu brillo. ¿Deseas descubrirlo?</p>
+            <div class="zona-botones" id="zonaBotones">
+                <button class="btn btn-salir" id="btnSalir">No</button>
+                <button class="btn btn-entrar" id="btnEntrar">¡Sí, ver!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANTALLA 2: JARDÍN GALÁCTICO -->
+    <div class="pantalla-jardin">
+        <canvas id="skyCanvas"></canvas>
+
+        <!-- Contenedor para las 21 estrellas de mensajes -->
+        <div class="contenedor-estrellas-mensajes" id="contenedorEstrellas"></div>
+
+        <div class="tarjeta-cumple" id="tarjeta">
+            <h2>Elogio a tu Luz<br>❣️❣️❣️</h2>
+            <p>"Hay mujeres que llevan en sus ojos el misterio de las constelaciones y en su sonrisa la calma del viento". Hoy el cielo se inclina ante la gracia de tu existencia y la nobleza de tu alma. Que la vida te siga vistiendo de alegría, magia y horizontes infinitos.<br>¡Feliz Cumpleaños Katheryne.❣️ ✨🌸</p>
+            <button class="btn-explorar" id="btnExplorar">Explorar el Cielo Constelado</button>
+        </div>
+
+        <!-- Ventana Emergente (Modal) Adaptada para Texto o Imagen -->
+        <div class="modal-mensaje" id="modalMensaje">
+            <div class="contenido-modal">
+                <span class="cerrar-modal" id="cerrarModal">&times;</span>
+                <p id="textoModal">Aquí irá tu poema secreto...</p>
+                <img id="imagenModal" src="" alt="Recuerdo especial">
+            </div>
+        </div>
+
+        <!-- Apartado inferior para el jardín de flores con sus IDs -->
+        <div class="apartado-jardin" id="jardinFlores">
+            <div class="flor tallo-1" id="flor1"><div class="petalos"></div></div>
+            <div class="flor tallo-2" id="flor2"><div class="petalos"></div></div>
+            <div class="flor tallo-3" id="flor3"><div class="petalos"></div></div>
+            <div class="flor tallo-4" id="flor4"><div class="petalos"></div></div>
+            <div class="flor tallo-5" id="flor5"><div class="petalos"></div></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
